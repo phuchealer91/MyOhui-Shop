@@ -1,0 +1,76 @@
+@mixin InlineBlock {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: $whiteColor;
+    text-decoration: none;
+    font-weight: 300;
+}
+.header{
+    height: 120px;
+    background-image: linear-gradient(0,$headerBold,$headerNot);
+    &__navbar{
+        display: flex;
+        justify-content: space-between;
+        &-list{
+            margin-top: 5px;
+            padding-left: 0;
+            list-style-type: none;
+        }
+
+        &-item{
+            @include InlineBlock();
+            position: relative;
+            margin: 0 8px;
+            display: inline-flex;
+            align-items: center;
+            min-height: 2.6rem;
+            &:hover{
+                cursor: pointer;
+                color: $textHover;
+            }
+           &-link{
+               @include InlineBlock();
+               &:hover{
+                color: $textHover;
+            }
+           }
+           &--bold{
+               font-weight: 600;
+               cursor: pointer;
+           }
+           &--separate:after{
+            content: '';
+            position: absolute;
+            display: block;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -.9rem;
+            // width: 1px;
+            // height: 1.2rem;
+            // background: $headerNot;
+            height: 1.2rem;
+            border-left: 1px solid rgb(223, 98, 115);
+           }
+           &--noPointer{
+               cursor: text;
+               color: $whiteColor;
+           }
+           
+        }
+        &-icon-link{
+                color: $whiteColor;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                // width: 1.6rem;
+                // height: 1.6rem;
+                &:hover{
+                    color: $textHover;
+                }
+        }
+        &-icons{
+            font-size: 1.8rem;
+            margin: 0 .4rem;
+        }
+    }
+}
