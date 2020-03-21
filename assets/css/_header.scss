@@ -55,6 +55,18 @@
                cursor: text;
                color: $whiteColor;
            }
+           //    hover
+            &--has-qr:hover{
+                cursor: pointer;
+            .header__navbar-qr{
+               display: block;
+            }
+             }
+            &--has-notify:hover{
+            .header__navbar-notify{
+                display: block;
+            }
+        }
            
         }
         &-icon-link{
@@ -71,6 +83,164 @@
         &-icons{
             font-size: 1.8rem;
             margin: 0 .4rem;
+        }
+        // QR
+        &-qr{
+            width: 18.6rem;
+            position: absolute;
+            top: 118%;
+            left: 0;
+            background: $whiteColor;
+            border-radius: .3rem;
+            display: none;
+            // transition: all ease .3s;
+            animation: fadeIn ease-in .3s;
+            &-img{
+                width: 100%;
+            }
+        }
+        &-qr:before{
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 13px;
+            top: -13px;
+            left: 0;
+        }
+        &-apps{
+            display: flex;
+            justify-content: space-between;
+            margin-top: -10px;
+            &-download{
+                text-decoration: none;
+                &:nth-child(1){
+                    margin-left: 2rem;
+                }
+                &:nth-child(2){
+                    margin-right: 2rem;
+                }
+                &-img{
+                    height: 1.6rem;
+                }
+            }
+        }
+        // header notify
+        &-notify{
+            position: absolute;
+            width: 40.4rem;
+            background: $whiteColor;
+            top: 118%;
+            right: 0;
+            border: 1px solid #ccc;
+            transform-origin: calc(100% - 20px) top;
+            animation: notifyGrowth ease-in .2s;
+            // de trinh duyet lam muot trai nghiem khi
+            // cai notify nay co 2 cai thay doi keyframe
+            will-change: opacity,transform;
+            display: none;
+            &-header{
+                height: 4rem;
+                line-height: 4rem;
+                background: $whiteColor;
+                cursor: default;
+                // khong cho nguoi dung coppy text
+                user-select: none;
+                // cho nguoi dung coppy text
+                // cursor: text;
+                h3{
+                    @include resetMP(0,null);
+                    color: #777;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    margin-left: 1.2rem;
+                }
+            }
+            &-list{
+                padding-left: 0;
+            }
+            &-item{
+                transition: all ease-in .2s;
+                &--read{
+                    background: $BgNotify;
+                }
+                &:hover{
+                    background: #f1f1f1;
+                    }
+                
+            }
+            &-link{
+                display: flex;
+                padding: 1rem 1.2rem;
+                text-decoration: none;
+                &-img{
+                    width: 4.8rem;
+                    // su dung de fix img vao giua khung
+                    object-fit: contain;
+                }
+            }
+            &-info{
+                margin-left: 1.2rem;
+                &-name{
+                    // display,color,font-Size,line-height
+                    @include notify(block,$blackColor,1.4rem,1.8rem);
+                    font-weight: 400;
+                }
+                &-desc{
+                    margin-top: .4rem;
+                    @include notify(block,gray,1.2rem,1.4rem);
+                }
+            }
+            // view all
+            &-footer{
+                //C1
+                // height: 4rem;
+                // line-height: 4rem;
+                // text-align: center;
+                //C2
+                //display: flex;
+                // display: flex;
+                // text-align: center;
+                background-color: $whiteColor;
+                // cursor: default;
+                &-btn{
+                    // C2
+                    // margin: auto;
+                    //C3
+                    // width: 100%;
+                    // display: block;
+                    // text-align: center;
+                    text-decoration: none;
+                    color: gray;
+                    font-weight: 300;
+                    font-size: 1.3rem;
+                    padding: .6rem 1.2rem;
+                    width: 100%;
+                    display: block;
+                    text-align: center;
+                }
+            }
+            // mui ten 
+            &:before{
+                position: absolute;
+                content: '';
+                border-style: solid;
+                border-width: 1.5rem 2.7rem;
+                border-color: transparent transparent $whiteColor transparent;
+                top: -2.3rem;
+                right: 0;
+                cursor: default;
+            }
+            &:after{
+                content: '';
+                position: absolute;
+                width: 7.2rem;
+                height: 2rem;
+                display: block;
+                top: -1.5rem;
+                right: 0;
+                cursor: default;
+            }
         }
     }
 }

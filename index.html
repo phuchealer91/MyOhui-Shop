@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="./css/grid.css"> -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <title>F8</title>
 </head>
 <body>
@@ -16,7 +16,20 @@
             <div class="grid"> 
                 <nav class="header__navbar">
                     <ul class="header__navbar-list">
-                        <li class="header__navbar-item header__navbar-item--separate">Vào cửa hàng trên ứng dụng MyOhui</li>
+                        <li class="header__navbar-item header__navbar-item--has-qr header__navbar-item--separate">
+                            Vào cửa hàng trên ứng dụng MyOhui
+                            <div class="header__navbar-qr">
+                                <img src="./assets/images/QR.png" alt="" class="header__navbar-qr-img">
+                                <div class="header__navbar-apps">
+                                    <a href="" class="header__navbar-apps-download">
+                                        <img src="./assets/images/google-play.png" alt="" class="header__navbar-apps-download-img">
+                                    </a>
+                                    <a href="" class="header__navbar-apps-download">
+                                        <img src="./assets/images/app-store.png" alt="" class="header__navbar-apps-download-img">
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
                         <li class="header__navbar-item">
                             <span class="header__navbar-item--noPointer">Kết nối</span>
                             <a href="" class="header__navbar-icon-link">
@@ -28,11 +41,73 @@
                         </li>
                     </ul>
                     <ul class="header__navbar-list">
-                        <li class="header__navbar-item">
+                        <li class="header__navbar-item header__navbar-item--has-notify">
                             <a href="" class="header__navbar-item-link">
                                 <i class="header__navbar-icons fas fa-bell"></i>
                                 Tin tức
                             </a>
+                            <div class="header__navbar-notify">
+                                <header class="header__navbar-notify-header">
+                                    <h3>Tin tức mới nhất</h3>
+                                </header>
+                                <ul class="header__navbar-notify-list">
+                                    <li class="header__navbar-notify-item header__navbar-notify-item--read">
+                                        <a href="" class="header__navbar-notify-link">
+                                            <img src="https://img.tickid.vn/photos/resized/200x120/83-1574758841-myphamohui-lgvina.png" alt="" class="header__navbar-notify-link-img">
+                                            <div class="header__navbar-notify-info">
+                                                <span class="header__navbar-notify-info-name">
+                                                    DA NHẠY CẢM THÌ CÓ DÙNG ĐƯỢC SECRET KHÔNG?DA NHẠY CẢM THÌ CÓ DÙNG ĐƯỢC SECRET KHÔNG?  
+                                                </span>
+                                                <span class="header__navbar-notify-info-desc">
+                                                    Mô tả mỹ phẩm chính hãng Ohui
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__navbar-notify-item header__navbar-notify-item--read">
+                                        <a href="" class="header__navbar-notify-link">
+                                            <img src="https://img.tickid.vn/photos/resized/200x120/83-1574758841-myphamohui-lgvina.png" alt="" class="header__navbar-notify-link-img">
+                                            <div class="header__navbar-notify-info">
+                                                <span class="header__navbar-notify-info-name">
+                                                    Ohui chính thức ra mắt dòng son lì mới THE FIRST GENITURE LIPSTICK
+                                                </span>
+                                                <span class="header__navbar-notify-info-desc">
+                                                    Mô tả mỹ phẩm chính hãng Ohui Ohui chính thức ra mắt dòng son lì mới THE FIRST GENITURE LIPSTICK
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__navbar-notify-item header__navbar-notify-item--read">
+                                        <a href="" class="header__navbar-notify-link">
+                                            <img src="https://img.tickid.vn/photos/resized/200x120/83-1574758841-myphamohui-lgvina.png" alt="" class="header__navbar-notify-link-img">
+                                            <div class="header__navbar-notify-info">
+                                                <span class="header__navbar-notify-info-name">
+                                                    Mỹ phẩm Ohui chính hãng
+                                                </span>
+                                                <span class="header__navbar-notify-info-desc">
+                                                    Mô tả mỹ phẩm chính hãng Ohui
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="header__navbar-notify-item header__navbar-notify-item--read">
+                                        <a href="" class="header__navbar-notify-link">
+                                            <img src="https://img.tickid.vn/photos/resized/200x120/83-1574758841-myphamohui-lgvina.png" alt="" class="header__navbar-notify-link-img">
+                                            <div class="header__navbar-notify-info">
+                                                <span class="header__navbar-notify-info-name">
+                                                    Mỹ phẩm Ohui chính hãng
+                                                </span>
+                                                <span class="header__navbar-notify-info-desc">
+                                                    Mô tả mỹ phẩm chính hãng Ohui
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer class="header__navbar-notify-footer">
+                                    <a href="" class="header__navbar-notify-footer-btn">Xem tất cả</a>
+                                </footer>
+                            </div>
                         </li>
                         <li class="header__navbar-item">
                             <a href="" class="header__navbar-item-link">
@@ -52,6 +127,106 @@
         <footer class="footer">
 
         </footer>
+    </div>
+
+    <!-- modal layout -->
+    <div class="modal">
+        <div class="modal__overlay"></div>
+        <div class="modal__body">
+                <!-- dang ky rieng -->
+                <!-- <div class="auth-form">
+                  <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng ký</h3>
+                        <span class="auth-form__switch-btn">Đăng nhập</span>
+                    </div>
+
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <p class="auth-form__policy-text">
+                            Bằng việc đăng ký, bạn đã đồng ý với Ohui về
+                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> & 
+                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a> 
+                        </p>
+                    </div>
+
+                    <div class="auth-form__controls">
+                        <button class="btn auth-form__controls--back btn--normal">TRỞ LẠI</button>
+                        <button class="btn btn--primary">ĐĂNG KÝ</button>
+                    </div>
+                  </div>
+                    <div class="auth-form__socials">
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials--facebook">
+                            <i class="fab fa-facebook-square auth-form__socials-icon"></i>
+                            <span class="auth-form__socials-title">
+                                Kết nối với Facebook
+                            </span>
+                        </a>
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials--google">
+                            <i class="fab fa-google auth-form__socials-icon"></i>
+                            <span class="auth-form__socials-title">
+                                Kết nối với Google
+                            </span>
+                        </a>
+                    </div>
+                </div> -->
+                <!-- login form -->
+                <div class="auth-form">
+                  <div class="auth-form__container">
+                    <div class="auth-form__header">
+                        <h3 class="auth-form__heading">Đăng nhập</h3>
+                        <span class="auth-form__switch-btn">Đăng ký</span>
+                    </div>
+
+                    <div class="auth-form__form">
+                        <div class="auth-form__group">
+                            <input type="text" class="auth-form__input" placeholder="Email của bạn">
+                        </div>
+                        <div class="auth-form__group">
+                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn">
+                        </div>
+                    </div>
+
+                    <div class="auth-form__aside">
+                        <div class="auth-form__help">
+                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                            <span class="auth-form__help-link--seperate"></span> 
+                            <a href="" class="auth-form__help-link">Cần trợ giúp?</a> 
+                        </div>
+                    </div>
+
+                    <div class="auth-form__controls">
+                        <button class="btn auth-form__controls--back btn--normal">TRỞ LẠI</button>
+                        <button class="btn btn--primary">ĐĂNG NHẬP</button>
+                    </div>
+                  </div>
+                    <div class="auth-form__socials">
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials--facebook">
+                            <i class="fab fa-facebook-square auth-form__socials-icon"></i>
+                            <span class="auth-form__socials-title">
+                                Đăng nhập với Facebook
+                            </span>
+                        </a>
+                        <a href="" class="btn btn--size-s btn--with-icon auth-form__socials--google">
+                            <i class="fab fa-google auth-form__socials-icon"></i>
+                            <span class="auth-form__socials-title">
+                                Đăng nhập với Google
+                            </span>
+                        </a>
+                    </div>
+                </div>
+        </div>
     </div>
 </body>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
