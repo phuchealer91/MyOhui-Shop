@@ -1,0 +1,210 @@
+.app {
+  overflow: hidden;
+  &__container {
+    background-color: #ededed;
+    @include respond(nor-desktop) {
+      margin-top: calc(#{$navbarss} + #{$headerSortBar});
+    }
+  }
+  &__content {
+    padding-top: 36px;
+    @include respond(phone) {
+      padding-top: 10px;
+      margin: 0 4px;
+    }
+  }
+}
+.mobile-category {
+  &__list {
+    display: none;
+    align-items: center;
+    list-style: none;
+    max-width: 100%;
+    overflow-x: auto;
+    @include respond(phone) {
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    @include respond(nor-desktop) {
+      display: flex;
+    }
+  }
+  &__item {
+    margin: 0 10px;
+    flex-shrink: 0;
+    display: flex;
+
+    &:nth-child(3n) &-link {
+      background-color: #1fc035ad;
+    }
+    &:nth-child(3n + 1) &-link {
+      background-color: #21e0c7ad;
+    }
+    &:nth-child(3n + 2) &-link {
+      background: #eb2085ad;
+    }
+
+    &-link {
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: $whiteColor;
+      width: 110px;
+      height: 4rem;
+      overflow: hidden;
+      display: block;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 2rem;
+      border-radius: 5px;
+      text-align: center;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+}
+.category {
+  position: relative;
+  background-color: $whiteColor;
+  border-radius: 3px;
+
+  &__heading {
+    font-size: 1.7rem;
+    color: $textColor;
+    padding: 12px 16px 0;
+    border-bottom: 1px solid #eee;
+    margin-top: 0;
+    &-icon {
+      font-size: 1.4rem;
+      margin-right: 3px;
+      position: relative;
+      top: -1px;
+    }
+  }
+
+  &-list {
+    list-style: none;
+    // margin: 8px 16px;
+  }
+
+  &-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:before {
+      position: absolute;
+      content: "";
+      border-top: 1px solid #f1f1f1;
+      top: 0;
+      left: 16px;
+      right: 16px;
+    }
+    &:first-child:before {
+      border-top: none;
+    }
+    // Dùng css selector > để gọi thằng con trong nó thuii
+    // Không dùng nó sẽ gọi thằng category-item__dropdown ở dưới luôn
+    // Khiến ở dưới bị hiện ra luôn vì có dùng chung class
+    &--active:hover > &__dropdown {
+      left: 100%;
+      visibility: visible;
+      opacity: 1;
+    }
+    &--active:hover > &__link-icon {
+      transform: rotate(180deg);
+    }
+    // Dùng css selector
+    &--active > .category-item__link:before {
+      position: absolute;
+      content: "";
+      border-color: transparent transparent transparent $headerBold;
+      border-style: solid;
+      border-width: 4px;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    &__dropdown {
+      position: absolute;
+      background-color: $whiteColor;
+      min-width: 200px;
+      z-index: 2;
+      left: 200px;
+      transition: all linear 0.2s;
+      visibility: hidden;
+      top: 0;
+      opacity: 0;
+      list-style: none;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      &-item {
+        @extend .category-item;
+        //  phan lop dropdown 2
+      }
+      &-icon {
+        @extend .category-item__link-icon;
+      }
+      &-link {
+        @extend .category-item__link;
+      }
+      //   &--two {
+      //     position: absolute;
+      //     background-color: $whiteColor;
+      //     min-width: 200px;
+      //     z-index: 2;
+      //     left: 280px;
+      //     transition: all linear 0.2s;
+      //     visibility: hidden;
+      //     top: 0;
+      //     opacity: 0;
+      //     list-style: none;
+      //     border: 1px solid rgba(0, 0, 0, 0.1);
+      //     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+      //   }
+      &--active:hover > .category-item__link-icon {
+        transform: rotate(180deg);
+      }
+      &--active:hover .category-item__dropdown--two {
+        left: 100%;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      &--active > .category-item__dropdown-link:before {
+        //Co the extend cho perfomate
+        position: absolute;
+        content: "";
+        border-color: transparent transparent transparent $headerBold;
+        border-style: solid;
+        border-width: 4px;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    &__link {
+      position: relative;
+      display: block;
+      padding: 6px 26px;
+      text-decoration: none;
+      font-size: 1.4rem;
+      color: $textColor;
+      right: 0;
+      transition: right linear 0.1s;
+
+      &:hover {
+        right: -6px;
+        color: $headerBold;
+      }
+      &-icon {
+        transition: transform linear 0.2s;
+        margin-left: auto;
+        margin-right: 16px;
+      }
+    }
+  }
+}

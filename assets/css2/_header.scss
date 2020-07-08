@@ -1,0 +1,771 @@
+%InlineBlock {
+  //   Style the li nam cung 1 hang
+  display: inline-block;
+  font-size: 1.4rem;
+  color: $whiteColor;
+  text-decoration: none;
+  font-weight: 300;
+}
+@mixin iconHover {
+  color: $textHover;
+  cursor: pointer;
+}
+.header {
+  height: $navbars;
+  @include respond(nor-desktop) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: $navbarss;
+  }
+  background-image: linear-gradient(0, $headerBold, $headerNot);
+  &__mobile-search {
+    padding: 12px;
+    display: none;
+    @include respond(nor-desktop) {
+      display: block;
+    }
+    &-icon {
+      font-size: 2.6rem;
+      color: $whiteColor;
+    }
+  }
+  &__sort {
+    &-bar {
+      position: fixed;
+      top: $navbarss;
+      left: 0;
+      right: 0;
+      align-items: center;
+      list-style: none;
+      height: $headerSortBar;
+      background-color: $whiteColor;
+      border-bottom: 1px solid $bgContainer;
+      box-shadow: 0 1px 1rem 0 rgba(0, 0, 0, 0.19);
+      display: none;
+      @include respond(nor-desktop) {
+        display: flex;
+      }
+    }
+    &-item {
+      flex: 1;
+
+      &-link {
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: $textColor;
+        display: block;
+        height: 100%;
+        line-height: $headerSortBar;
+        text-align: center;
+        position: relative;
+        &:before {
+          position: absolute;
+          content: "";
+          top: 50%;
+          right: 0;
+          border-left: 1px solid $borderColor;
+          height: 60%;
+          transform: translateY(-50%);
+        }
+      }
+      &:nth-of-type(4) > &-link:before {
+        display: none;
+      }
+      &--active &-link {
+        color: $headerBold;
+      }
+      &--active {
+        border-bottom: 1px solid $headerBold;
+      }
+    }
+  }
+  &__navbar {
+    height: $navHead;
+    display: flex;
+    justify-content: space-between;
+
+    &-list {
+      display: flex;
+      margin: 5px 0 0;
+      list-style: none;
+      padding-left: 0;
+    }
+    // Login
+    &-name {
+      @include styleText(1.5rem, $whiteColor, 400);
+    }
+    &-img {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      margin-right: 3px;
+      border: 1px solid $headerNot;
+    }
+    &-info {
+      position: absolute;
+      list-style: none;
+      width: 150px;
+      min-width: 100%;
+      top: calc(100% + 5px);
+      right: 0;
+      background-color: $whiteColor;
+      z-index: 3;
+      border-radius: 3px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.19);
+      display: none;
+      animation: fadeIn ease-in-out 0.2s;
+      &-item {
+        color: $textColor;
+        padding: 8px 12px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        transition: ease-in 0.2s;
+        border-radius: 3px;
+        &:hover {
+          background-color: $BgItemNotify;
+        }
+        // &:nth-of-type(1) {
+        //   margin-top: 5px;
+        // }
+        // &:nth-of-type(4) {
+        //   margin-bottom: 5px;
+        // }
+      }
+      &:before {
+        position: absolute;
+        content: "";
+        border-color: transparent transparent $whiteColor transparent;
+        border-style: solid;
+        border-width: 12px 16px;
+        right: 30%;
+        top: -23px;
+      }
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 12px;
+        top: -12px;
+      }
+      &--logout {
+        border-top: 1px solid #eee;
+      }
+    }
+    &-item {
+      @extend %InlineBlock;
+      position: relative;
+      margin: 0 8px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      // login
+      &--login:hover .header__navbar-info {
+        display: block;
+      }
+      &:hover {
+        @include iconHover();
+      }
+      //style gạch ở giữa
+      &--separate:after {
+        //style width vs height
+        // display: block;
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 2px;
+        background: $headerNot;
+        right: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        //c2 dùng border-left
+      }
+      &-link {
+        @extend %InlineBlock;
+        &:hover {
+          @include iconHover();
+        }
+      }
+      &--strong {
+        font-weight: 600;
+        cursor: pointer;
+      }
+      // //   Hover display QR
+      &--has-qr {
+        &:hover {
+          .header__qr {
+            display: block;
+          }
+        }
+      }
+      //   Hover notify
+      &--has-notify {
+        &:hover {
+          .header__notify {
+            display: block;
+          }
+        }
+      }
+    }
+    &-icon-link {
+      color: $whiteColor;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      &:nth-child(2) {
+        margin-left: 3px;
+      }
+      &:hover {
+        @include iconHover();
+      }
+    }
+    // Style icon
+    &-icons {
+      font-size: 1.8rem;
+      margin: 0 4px;
+    }
+    // default pointer
+    &-title-noPointer {
+      cursor: text;
+      color: $whiteColor;
+    }
+  }
+  //   Style QR - code
+  //   header_qr
+  &__qr {
+    background-color: $whiteColor;
+    width: 186px;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    border-radius: 3px;
+    padding: 8px;
+    animation: fadeIn ease-in 0.3s;
+    display: none;
+    z-index: 2;
+    box-shadow: 0 0.1rem 0.2rem 0 rgba(0, 0, 0, 0.19);
+    &-img {
+      width: 100%;
+    }
+    &-apps {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: -10px;
+    }
+    &-download {
+      height: 15px;
+    }
+    &-link {
+      &:nth-child(1) {
+        margin-left: 18px;
+      }
+      &:nth-child(2) {
+        margin-right: 18px;
+      }
+    }
+    // element gia fix khi hover
+    &:before {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 100%;
+      left: 0;
+      height: 13px;
+      top: -12px;
+    }
+  }
+  //   Header Notification
+  &__notify {
+    position: absolute;
+    width: 404px;
+    top: calc(100% + 5px);
+    background-color: $whiteColor;
+    right: 0;
+    border: 1px solid $borderColor;
+    display: none;
+    // Dieu chinh hieu ung scale to len
+    transform-origin: calc(100% - 32px) top;
+    cursor: default;
+    // Giúp cho hiệu ứng animation hiệu quả hơn
+    will-change: opacity, transform;
+    animation: headerNotifyGrowth ease-in 0.25s;
+    z-index: 2;
+    border-radius: 3px;
+    &-title {
+      color: #777;
+      margin: 0 0 0 12px;
+      font-weight: 400;
+      font-size: 1.5rem;
+      //   cho bằng vs chiều cao thằng chứa nó là header__notify-header
+      // để căn cho nó xuống đều
+      line-height: 40px;
+    }
+    &-img {
+      width: 48px;
+      //   height: 48px;
+      object-fit: contain;
+    }
+    &-header {
+      height: 40px;
+      background-color: $whiteColor;
+    }
+    &-list {
+      padding-left: 0;
+    }
+    &-item {
+      &--viewed {
+        background-color: $BgNotify;
+      }
+      &:hover {
+        background-color: $BgItemNotify;
+      }
+    }
+    &-link {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      text-decoration: none;
+    }
+    &-info {
+      margin-left: 12px;
+    }
+    &-name {
+      @include notifyStyle(block, 1.3rem, $textColor, 1.6rem);
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    &-desc {
+      @include notifyStyle(block, 1.2rem, $textNotify, 1.5rem);
+    }
+    &-footer {
+      display: flex;
+      &-btn {
+        text-decoration: none;
+        color: $textNotify;
+        padding: 4px 32px;
+        margin: auto;
+        font-size: 1.4rem;
+        font-weight: 400;
+      }
+    }
+    &:before {
+      position: absolute;
+      display: block;
+      content: "";
+      right: 15px;
+      top: -20px;
+      border: {
+        color: transparent transparent $whiteColor transparent;
+        width: 10px 15px;
+        style: solid;
+      }
+    }
+    &:after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 80px;
+      height: 15px;
+      right: 0;
+      top: -15px;
+    }
+  }
+  // Header With Search
+  &-with-search {
+    display: flex;
+    align-items: center;
+    height: $navSearchs;
+    @include respond(nor-desktop) {
+      height: 68px;
+    }
+    @include respond(phone) {
+      justify-content: space-between;
+    }
+    margin: 0 8px;
+  }
+  &__logo {
+    width: 150px;
+    @include respond(phone) {
+      width: unset;
+    }
+    &-link {
+      // Fix TH trên IE có gạch chân
+      text-decoration: none;
+      color: transparent;
+      @include respond(phone) {
+        display: block;
+        line-height: 0;
+      }
+    }
+    &-img {
+      width: auto;
+      height: 55px;
+      border: 1px solid $whiteColor;
+    }
+  }
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    flex: 1;
+    background-color: $whiteColor;
+    border-radius: 3px;
+    @include respond(phone) {
+      position: fixed;
+      top: $navbarss;
+      height: 46px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      // transition: linear 0.2s;
+      animation: mobileSearch linear 0.3s;
+      display: none;
+      padding: 0 12px;
+    }
+
+    &-wrap {
+      display: flex;
+      position: relative;
+      flex: 1;
+      height: 100%;
+    }
+    &-input {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      outline: none;
+      font-size: 1.5rem;
+      padding: 0 16px;
+      border-radius: 3px;
+      color: $textColor;
+      &:focus ~ .header__search-history {
+        display: block;
+      }
+    }
+    // History
+    &-history {
+      position: absolute;
+      background-color: $whiteColor;
+      border-radius: 3px;
+      // overflow: hidden;
+      width: calc(100% - 16px);
+      top: calc(100% + 3px);
+      left: 0;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.19);
+      display: none;
+      z-index: 2;
+      @include respond(phone) {
+        position: fixed;
+        top: calc(#{$navbarss} + #{$headerSortBar});
+        left: 0;
+        width: 100%;
+      }
+      &-heading {
+        margin: 4px 12px;
+        font-size: 1.5rem;
+        color: $textNotify;
+        font-weight: 300;
+        @include respond(phone) {
+          padding: 0 12px;
+        }
+      }
+      &-list {
+        list-style: none;
+        margin-top: -2px;
+        @include respond(phone) {
+          padding: 0 12px;
+        }
+      }
+      &-item {
+        height: 38px;
+        line-height: 38px;
+        padding: 0 12px;
+        &:hover {
+          background-color: $BgItemNotify;
+        }
+        &:last-child {
+          border-bottom-left-radius: 3px;
+          border-bottom-right-radius: 3px;
+        }
+      }
+      &-link {
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: $textColor;
+        font-weight: 400;
+        display: block;
+      }
+    }
+    &-select {
+      border-left: 1px solid #ccc;
+      padding-left: 8px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+
+      &:hover {
+        .header__search-option {
+          display: block;
+        }
+      }
+    }
+    &-option {
+      position: absolute;
+      list-style-type: none;
+      background-color: $whiteColor;
+      right: 0;
+      top: calc(100% + 10px);
+      width: 120px;
+      border-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.19);
+      display: none;
+      animation: fadeIn ease-in 0.2s;
+      &-item {
+        padding: 2px 6px 2px 12px;
+        border-radius: 3px;
+        span {
+          font-size: 1.4rem;
+          color: $textColor;
+        }
+        &-icon {
+          font-size: 1.2rem;
+          color: $headerNot;
+          margin: 0 5px;
+          display: none;
+        }
+        &--active {
+          .header__search-option-item-icon {
+            display: inline-block;
+          }
+        }
+        &:hover {
+          background-color: $BgItemNotify;
+          cursor: pointer;
+        }
+      }
+      &:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 20px;
+        top: -20px;
+      }
+    }
+    &-label {
+      font-size: 1.4rem;
+      color: $textColor;
+    }
+    &-icon {
+      color: #666;
+      margin: 0 16px 0 8px;
+      font-size: 1.4rem;
+      position: relative;
+      top: 1px;
+    }
+    &-btn {
+      background-color: $headerNot;
+      margin-right: 8px;
+      width: 44px;
+      height: 28px;
+      border-radius: 3px;
+      border: 0;
+      outline: none;
+      // display: flex;
+      &:hover {
+        background-color: $btnHover;
+        cursor: pointer;
+      }
+      &-icon {
+        // margin: auto;
+        font-size: 1.6rem;
+        color: $whiteColor;
+      }
+    }
+  }
+  &__cart {
+    width: 150px;
+    // text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    @include respond(nor-desktop) {
+      width: 74px;
+      justify-content: flex-end;
+    }
+    cursor: pointer;
+    &-icon {
+      color: $whiteColor;
+      font-size: 2.4rem;
+    }
+    &-list {
+      position: absolute;
+      top: 100%;
+      right: -5px;
+      background-color: $whiteColor;
+      width: 400px;
+      @include respond(nor-desktop) {
+        position: fixed;
+        top: $navbarss;
+        right: 0;
+        width: 100%;
+        padding: 0 calc((100% - 644px) / 2);
+      }
+      border-radius: 2px;
+      box-shadow: 0 2px 3.125rem 0 rgba(0, 0, 0, 0.19);
+      display: none;
+      animation: fadeIn ease-in 0.2s;
+      z-index: 2;
+      cursor: default;
+      // Message notifition
+      &-no-cart-msg {
+        display: none;
+        // display: block;
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        color: $textColor;
+      }
+      &:before {
+        position: absolute;
+        content: "";
+        right: 5px;
+        top: -32px;
+        border-color: transparent transparent $whiteColor transparent;
+        border-style: solid;
+        border-width: 16px 18px;
+        cursor: pointer;
+        @include respond(nor-desktop) {
+          display: none;
+        }
+      }
+      &-no-cart-img {
+        padding: 20px;
+        width: 100%;
+        display: none;
+      }
+      // TH no cart
+      &--no-cart &-no-cart-msg,
+      &--no-cart &-no-cart-img {
+        display: block;
+      }
+      // Style có sản phẩm
+      &-item {
+        // padding: 12px;
+        list-style: none;
+      }
+    }
+    &-item {
+      display: flex;
+      align-items: center;
+      transition: ease-in 0.2s;
+      &:hover {
+        background-color: $BgItemNotify;
+      }
+      &-img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        border: 1px solid #ccc;
+        margin: 12px;
+      }
+      &-info {
+        width: 100%;
+        margin-right: 12px;
+      }
+      &-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      &-name {
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+
+        // width: 190px;
+        flex: 1;
+        max-height: 3.2rem;
+        overflow: hidden;
+        line-height: 1.6rem;
+        margin: 0;
+        display: block;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        @include styleText(1.3rem, $textColor, 500);
+      }
+
+      &-price {
+        // margin-left: auto;
+        @include styleText(1.2rem, $headerBold, 500);
+        &-wrap {
+          padding-left: 16px;
+        }
+      }
+      &-multiphy {
+        font-size: 0.9rem;
+        color: $textColor;
+        margin: 0 3px;
+      }
+      &-qnt {
+        @include styleText(1.2rem, $textColor, none);
+      }
+      &-body {
+        display: flex;
+        align-items: center;
+        line-height: 1.6rem;
+      }
+      &-desc {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        width: 190px;
+        @include styleText(1.2rem, $textColor, 300);
+      }
+      &-remove {
+        margin-left: auto;
+        cursor: pointer;
+        transition: ease-in 0.2s;
+        &:hover {
+          color: $headerBold;
+          font-weight: 500;
+        }
+      }
+    }
+    &-view {
+      line-height: 36px;
+      text-align: center;
+      float: right;
+      margin: 12px 12px 12px 0;
+    }
+    &-wrap {
+      position: relative;
+      display: inline-block;
+      padding: 12px;
+    }
+    &-wrap:hover &-list {
+      display: block;
+    }
+    &-notice {
+      position: absolute;
+      background-color: $whiteColor;
+      padding: 1px 5px;
+      line-height: 1.6rem;
+      border-radius: 10px;
+      top: -2px;
+      right: -2px;
+      border: 2px solid $headerBold;
+      @include styleText(1.4rem, $textColor, 500);
+    }
+    &-heading {
+      @include styleText(1.4rem, $textColor, 300);
+      margin: 12px 0 12px 12px;
+    }
+  }
+}
