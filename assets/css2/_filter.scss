@@ -1,0 +1,120 @@
+.home-filter {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 12px 22px;
+  border-radius: 2px;
+  &__page {
+    display: flex;
+    align-items: center;
+  }
+  &__label {
+    font-size: 1.4rem;
+    color: $textColor;
+    margin-right: 16px;
+  }
+  &__btn {
+    margin-right: 12px;
+    min-width: 90px;
+  }
+
+  &__page {
+    margin-left: auto;
+    &-num {
+      margin-right: 16px;
+      font-size: 1.5rem;
+      color: $textColor;
+      font-weight: 500;
+    }
+    &-current {
+      color: $headerBold;
+    }
+    &-control {
+      display: flex;
+      align-items: center;
+      // justify-content: space-around;
+      height: 36px;
+      width: 75px;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+    &-btn {
+      display: flex;
+      flex: 1;
+      background-color: $whiteColor;
+      height: 100%;
+      &:first-child {
+        border-right: 1px solid $bgContainer;
+
+        // height: 100%;
+      }
+
+      &--disable {
+        background-color: $borderColor;
+        cursor: default;
+      }
+      &--disable .home-filter__page-icon {
+        color: #bbb;
+      }
+    }
+
+    &-icon {
+      margin: auto;
+      font-size: 1.4rem;
+      color: #666;
+    }
+  }
+}
+
+.select-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 218px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: $whiteColor;
+  border-radius: 2px;
+  z-index: 1;
+  cursor: pointer;
+  &__label {
+    font-size: 1.6rem;
+    color: $textColor;
+  }
+  &__icon {
+    font-size: 1.6rem;
+    color: #666;
+  }
+  &__list {
+    border-top: 1px solid #eee;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    background-color: $whiteColor;
+    display: none;
+    animation: fadeIn ease-in 0.2s;
+  }
+  &:hover &__list {
+    display: block;
+  }
+  &__item {
+    width: 100%;
+    padding: 8px 12px;
+
+    &-link {
+      font-size: 1.5rem;
+      color: $textColor;
+      text-decoration: none;
+      transition: color ease-in 0.1s;
+      display: block;
+      padding: 4px 0;
+      &:hover {
+        color: $headerBold;
+        font-weight: 400;
+      }
+    }
+  }
+}

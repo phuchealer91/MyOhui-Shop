@@ -1,0 +1,84 @@
+@mixin respond($breakpoint) {
+  // //  < 740px
+  // @if $breakpoint == phone {
+  //   @media only screen and(max-width: 46.1875em) {
+  //     @content;
+  //   }
+  // }
+  // // > 740px and < 1024px
+  // @if $breakpoint == tab-port {
+  //   @media only screen and(min-width: 46.25em) and (max-width: 63.9375em) {
+  //     @content;
+  //   }
+  // }
+  // // >= 1024px
+  // @if $breakpoint == nor-desktop {
+  //   @media only screen and(min-width: 64em) {
+  //     @content;
+  //   }
+  // }
+  //  Phone: < 740px 73.9em
+  @if $breakpoint == phone {
+    @media only screen and(max-width: 739px) {
+      .hide-on-mobile {
+        display: none;
+      }
+      #mobile-search-checkbox:checked ~ .header__search {
+        display: flex;
+      }
+      @content;
+    }
+  }
+  // Mobile & tablet:  <= 1023px
+  @if $breakpoint == nor-desktop {
+    @media only screen and(max-width: 1023px) {
+      .hide-on-mobile-tablet {
+        display: none;
+      }
+
+      @content;
+    }
+  }
+
+  // Tablet:  > 740px and < 1024px
+  @if $breakpoint == tab-port {
+    @media only screen and(min-width: 740px) and (max-width: 1023px) {
+      .hide-on-tablet {
+        display: none;
+      }
+      @content;
+    }
+  }
+}
+// @mixin respond($breakpoint) {
+//   @if $breakpoint == smallPhone {
+//     @media (max-width: 25em) {
+//       @content;
+//     } // 400px
+//   }
+//   @if $breakpoint == phone {
+//     @media (max-width: 37.5em) {
+//       @content;
+//     } // 600px
+//   }
+//   @if $breakpoint == tab-port {
+//     @media (max-width: 57.75em) {
+//       @content;
+//     } //924px
+//   }
+//   @if $breakpoint == tab-land {
+//     @media (max-width: 75em) {
+//       @content;
+//     } //1200px
+//   }
+//   @if $breakpoint == nor-desktop {
+//     @media (max-width: 93.75em) {
+//       @content;
+//     }
+//   }
+//   @if $breakpoint == big-desktop {
+//     @media (max-width: 112.5em) {
+//       @content;
+//     } //1800px
+//   }
+// }
